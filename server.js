@@ -13,6 +13,7 @@ app.use(helmet());
 // Cross Origin Resource Sharing
 const allowedOrigins = [
     'http://localhost:3000',
+    'https://lead-management-app-chi.vercel.app/'
 ];
 
 const corsOptions = {
