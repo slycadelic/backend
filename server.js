@@ -13,24 +13,24 @@ app.use(helmet());
 // Cross Origin Resource Sharing
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://lead-management-app-chi.vercel.app/'
+    'https://lead-management-app-chi.vercel.app'
 ];
 
-// const corsOptions = {
-//     origin: (origin, callback) => {
-//         if (allowedOrigins.includes(origin) || !origin) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error(`origin: ${origin} Not allowed by CORS`));
-//         }
-//     },
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-// };
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error(`origin: ${origin} Not allowed by CORS`));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
 // Handle actual requests
-app.use(cors());
+app.use(cors(corsOptions));
 // Handle preflight for all routes
 // app.options('*', cors(corsOptions));
 
