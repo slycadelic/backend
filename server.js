@@ -16,23 +16,23 @@ const allowedOrigins = [
     'https://lead-management-app-chi.vercel.app/'
 ];
 
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error(`origin: ${origin} Not allowed by CORS`));
-        }
-    },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         if (allowedOrigins.includes(origin) || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error(`origin: ${origin} Not allowed by CORS`));
+//         }
+//     },
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+// };
 
 // Handle actual requests
-app.use(cors(corsOptions));
+app.use(cors());
 // Handle preflight for all routes
-app.options('*', cors(corsOptions));
+// app.options('*', cors(corsOptions));
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
